@@ -41,7 +41,9 @@ Use your Camera app to scan the barcode, and follow the steps
 Download the Expo Go app from the PlayStore (https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_ZA&gl=US), and use the app to scan the QR code
 
 You should see this screen after the app loads from the server
+<br/>
 <img width="319" alt="Screenshot 2021-04-14 at 14 17 31" src="https://user-images.githubusercontent.com/22444640/114709196-93e03b80-9d2c-11eb-93c0-0aadecfb1a3d.png">
+<br/>
 
 ## You're done! 🎉
 If you're having fun and feel like overachieving, you can make some changes to `screens/TabOneScreen.tsx` and see how they reflect on your app.
