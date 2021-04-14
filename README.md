@@ -43,9 +43,9 @@ Download the Expo Go app from the PlayStore (https://play.google.com/store/apps/
 You should see this screen after the app loads from the server
 <br/>
 <img width="319" alt="Screenshot 2021-04-14 at 14 17 31" src="https://user-images.githubusercontent.com/22444640/114709196-93e03b80-9d2c-11eb-93c0-0aadecfb1a3d.png">
-<br/>
+<br/><br/>
 
-## You're done! 🎉
+## You're done! Congratulations! 🎉
 If you're having fun and feel like overachieving, you can make some changes to `screens/TabOneScreen.tsx` and see how they reflect on your app.
 
 See you online soon!
