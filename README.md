@@ -28,5 +28,11 @@ The Expo CLI is a command line interface that interfaces between you and the Exp
 3. Run `cd my-app` once the initialization is complete
 4. Run `expo start` to start the app server, you should see a QR code in the terminal, or in an automatically opened up browser tab.
 5. Run the app on your mobile device
-   5.1. On your Apple Device, use your Camera app to scan the barcode, and follow the steps
-   5.2. On your Android device, download the Expo Go app from the PlayStore, and use the app to scan the QR code
+
+### On your Apple Device
+
+Use your Camera app to scan the barcode, and follow the steps
+
+### On your Android Device
+
+Download the Expo Go app from the PlayStore (https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_ZA&gl=US), and use the app to scan the QR code
