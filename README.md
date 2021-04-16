@@ -18,7 +18,7 @@ Expo is an open-source platform for making universal native apps for Android, iO
 
 The Expo CLI is a command line interface that interfaces between you and the Expo tools.
 
-1. Run `npm install --global expo-cli`
+1. Run `npm install --global expo-cli` (If you're on linux or mac, you might get a `EACCESS` error, in that case, run `sudo npm install --global expo-cli`; Thanks to Tracy for picking this up!)
 2. Run `expo -V` to verify that expo has been installed (note the caps "-V" this time)
 
 ## Step 3 - Create your first Expo App! 🎉
