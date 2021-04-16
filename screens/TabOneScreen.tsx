@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, TextInput } from "react-native";
+import { Alert, Button, StyleSheet, TextInput } from "react-native";
 
 import { Text, View } from "../components/Themed";
 
 const TabOneScreen = () => {
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState(["message 1", "message 2"]);
+
+  const handleAddMessage = (newMessage: string) => {
+    setMessages([...messages, newMessage]);
+  };
+
+  const handleSubmitMessage = () => {
+    handleAddMessage(message);
+    Alert.alert(`Your message has been saved! Well done. ${message}`);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>What are you grateful for today</Text>
@@ -14,7 +25,10 @@ const TabOneScreen = () => {
         onChangeText={setMessage}
         value={message}
       />
-      <Text>{message}</Text>
+      <Button title="Submit" onPress={handleSubmitMessage} />
+
+      <Text>Messages:</Text>
+      <Text>{JSON.stringify(messages, null, 2)}</Text>
     </View>
   );
 };
