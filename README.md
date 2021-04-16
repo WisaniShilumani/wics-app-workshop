@@ -18,7 +18,7 @@ Expo is an open-source platform for making universal native apps for Android, iO
 
 The Expo CLI is a command line interface that interfaces between you and the Expo tools.
 
-1. Run `npm install --global expo-cli`
+1. Run `npm install --global expo-cli` (If you're on linux or mac, you might get a `EACCESS` error, in that case, run `sudo npm install --global expo-cli`; Thanks to Tracy for picking this up!)
 2. Run `expo -V` to verify that expo has been installed (note the caps "-V" this time)
 
 ## Step 3 - Create your first Expo App! 🎉
@@ -30,7 +30,7 @@ The Expo CLI is a command line interface that interfaces between you and the Exp
 5. Run `expo start` to start the app server, you should see a QR code in the terminal, or in an automatically opened up browser tab.
    <img width="524" alt="Screenshot 2021-04-14 at 14 01 52" src="https://user-images.githubusercontent.com/22444640/114707477-8f1a8800-9d2a-11eb-8759-e857c476df71.png">
 
-6. Run the app on your mobile device
+6. Run the app on your mobile device, make sure your machine and device are connected to the same Wifi Network.
 
 ### On your Apple Device
 
@@ -39,3 +39,13 @@ Use your Camera app to scan the barcode, and follow the steps
 ### On your Android Device
 
 Download the Expo Go app from the PlayStore (https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_ZA&gl=US), and use the app to scan the QR code
+
+You should see this screen after the app loads from the server
+<br/><br/>
+<img width="319" alt="Screenshot 2021-04-14 at 14 17 31" src="https://user-images.githubusercontent.com/22444640/114709196-93e03b80-9d2c-11eb-93c0-0aadecfb1a3d.png">
+<br/><br/>
+
+## You're done! Congratulations! 🎉
+If you're having fun and feel like overachieving, you can make some changes to `screens/TabOneScreen.tsx` and see how they reflect on your app.
+
+See you online soon!
