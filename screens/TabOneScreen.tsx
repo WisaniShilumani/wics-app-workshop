@@ -1,35 +1,82 @@
-import React, { useState } from "react";
-import { Alert, Button, StyleSheet, TextInput } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Alert, Button, ScrollView, StyleSheet, TextInput } from "react-native";
+import firebase from "firebase";
 
 import { Text, View } from "../components/Themed";
+import PrettyMessage from "../components/pretty-message";
 
 const TabOneScreen = () => {
+  // 1. Component Mounts; 2. Components Updates; 3. Component Unmount
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState(["message 1", "message 2"]);
+  const [messages, setMessages] = useState([] as any);
+  const [loaded, setLoaded] = useState(false);
+
+  const handleLoadMessages = () => {
+    firebase
+      .firestore()
+      .collection("/messages")
+      .get()
+      .then((snapshot) => {
+        const loadedMessages = snapshot.docs.map((doc) => {
+          return doc.data();
+        });
+        setMessages(loadedMessages);
+        setLoaded(true);
+      });
+  };
+
+  useEffect(() => {
+    handleLoadMessages();
+  }, []);
 
   const handleAddMessage = (newMessage: string) => {
+    // firebase.firestore
+    // firebase.firestore()
+    if (!newMessage.length) {
+      alert("Add a message bru");
+      return null;
+    }
+
+    firebase
+      .firestore()
+      .collection("/messages")
+      .add({
+        text: newMessage,
+        timestamp: new Date(),
+        person: "Wisani Shilumani",
+        tags: ["#gratitude", "#friday"],
+      });
     setMessages([...messages, newMessage]);
   };
 
   const handleSubmitMessage = () => {
     handleAddMessage(message);
-    Alert.alert(`Your message has been saved! Well done. ${message}`);
   };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>What are you grateful for today</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter a message"
-        onChangeText={setMessage}
-        value={message}
-      />
-      <Button title="Submit" onPress={handleSubmitMessage} />
+  if (!loaded) {
+    return <Text>Loading...</Text>;
+  }
 
-      <Text>Messages:</Text>
-      <Text>{JSON.stringify(messages, null, 2)}</Text>
-    </View>
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.title}>What are you grateful for today</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter a message"
+          onChangeText={setMessage}
+          value={message}
+        />
+        <Button title="Submit" onPress={handleSubmitMessage} />
+
+        <Text>Messages:</Text>
+        {messages.map((currMessage) => (
+          <PrettyMessage text="Default text" date="some date" />
+        ))}
+
+        <Text>{JSON.stringify(messages, null, 2)}</Text>
+      </View>
+    </ScrollView>
   );
 };
 
