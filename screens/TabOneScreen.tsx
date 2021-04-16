@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button, ScrollView, StyleSheet, TextInput } from "react-native";
+import {
+  Alert,
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+} from "react-native";
 import firebase from "firebase";
 
 import { Text, View } from "../components/Themed";
@@ -11,6 +18,7 @@ const TabOneScreen = () => {
   const [messages, setMessages] = useState([] as any);
   const [loaded, setLoaded] = useState(false);
 
+  const x = "";
   const handleLoadMessages = () => {
     firebase
       .firestore()
@@ -46,7 +54,6 @@ const TabOneScreen = () => {
         person: "Wisani Shilumani",
         tags: ["#gratitude", "#friday"],
       });
-    setMessages([...messages, newMessage]);
   };
 
   const handleSubmitMessage = () => {
@@ -60,6 +67,13 @@ const TabOneScreen = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Image
+          source={{
+            uri:
+              "https://media.istockphoto.com/vectors/yoga-different-people-vector-id1166219231?k=6&m=1166219231&s=612x612&w=0&h=BXil_lf2N2GXl_vPx04QCz4i7Xx90Z8SKy6cLq4yD_M=",
+          }}
+          style={styles.image}
+        />
         <Text style={styles.title}>What are you grateful for today</Text>
         <TextInput
           style={styles.input}
@@ -70,11 +84,12 @@ const TabOneScreen = () => {
         <Button title="Submit" onPress={handleSubmitMessage} />
 
         <Text>Messages:</Text>
-        {messages.map((currMessage) => (
-          <PrettyMessage text="Default text" date="some date" />
+        {messages.map((currMessage: any) => (
+          <PrettyMessage
+            text={currMessage.text}
+            date={currMessage.timestamp.toString()}
+          />
         ))}
-
-        <Text>{JSON.stringify(messages, null, 2)}</Text>
       </View>
     </ScrollView>
   );
@@ -105,5 +120,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     marginTop: 32,
+  },
+  image: {
+    height: 300,
+    width: "100%",
   },
 });

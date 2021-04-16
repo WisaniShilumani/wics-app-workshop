@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const PrettyMessage = ({ text, date }: any) => {
   return (
     <View style={styles.container}>
-      <Text>{text}</Text>
+      <Text>{text}...</Text>
       <Text style={styles.date}>{date}</Text>
     </View>
   );
